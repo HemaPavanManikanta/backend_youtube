@@ -11,18 +11,16 @@ on:
 
 # jobs
 jobs:
-  
+    # job name
   deploy:
 
     # server
     runs-on: ubuntu-latest
-
     # versions you want to test your app on
     # strategy:
     #   matrix:
     #     node-version: [18.x, 20.x, 22.x]
-    #     # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
         # switch branch - (main)
     - uses: actions/checkout@v4
@@ -31,11 +29,15 @@ jobs:
     #   with:
     #     node-version: ${{ matrix.node-version }}
     #     cache: 'npm'
-        # actual command
+    #     # actual command
+    - name : Build Docker Image
+      run: docker build -t pavanmanikanta1/youtube-backend:latest .
 
-    - name : Build docker image
-      run: docker build -t nehal524/youtube-backend:latest .
+    - name : "Build Successful"
+      run: echo "Docker Image Built Successfully"
+# docker hub - 2367te346tr3t2ewyquert7yer
+    - name: Docker Login
+      run: echo "${{ secrets.DOCKER_HUB_ACCESS_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_ACCESS_USERNAME }}" --password-stdin
 
-    - name : Docker Login
-      run: echo ${{ secrets.DOCKER_HUB_ACCESS_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_ACCESS_USERNAME }} --password-stdin
-      
+    - name: Login Successful'
+      run: echo "Logged in to Docker Hub successfully"
