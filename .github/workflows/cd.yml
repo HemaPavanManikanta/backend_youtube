@@ -36,7 +36,7 @@ jobs:
     - name : "Build Successful"
       run: echo "Docker Image Built Successfully"
 # docker hub - 2367te346tr3t2ewyquert7yer
-    - name: Docker Login
+    - name: Docker Loginn
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_ACCESS_USERNAME }}" --password-stdin
 
     - name: Login Successful'
