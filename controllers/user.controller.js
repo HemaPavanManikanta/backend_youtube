@@ -9,8 +9,9 @@ const createUser = async(req, res) => {
        // create new user
 
        const newUser = new User({
-        username, email
-       })
+        username, 
+        email,
+       });
 
        // save user
 
