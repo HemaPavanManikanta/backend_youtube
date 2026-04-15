@@ -4,11 +4,13 @@ const Redis = require("ioredis");
 
 //basic setup
 const redis = new Redis({
-    host: "127.0.0.1", // localhost
+    host: "redis", // localhost
     port: 6379 // port where redis is running
 })
+
 //connet to redis
 // event -> connect
+
 redis.on("connect", () => {
     console.log("Redis DB connected!")
 })
